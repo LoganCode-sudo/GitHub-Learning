@@ -27,15 +27,10 @@ git commands:
 
 Practical:
 when you clone a repository from github to your local machine it comes with a hidden folder (.git) this folder tracks all commits/changes made to the repository since it was created.
-
 once you have made changes to your copy of the repository you can use 'git status' to see which files and folders have been changed but not added or commited(shows up in red).
-
 you need to first track those changes using 'git add .' the '.' means track all changes or you can add the name of the file or folder.
-
 before you commit you need a commit message. git commit -m is used to add commit title. you can also add a description using (git commit -m "title" -m "description"). you will the be presented with information on the commit you made.
-
 at this point the the changes you made are not live yet, they are still local. you then push the changes to where the repository is hosted.
-
 before you can push your changes to github you need to prove to github that you are the owner of your account. this is done by ssh keys.
 
 ssh keys:
@@ -88,6 +83,16 @@ now that the branches have been merged you no longer need the branch that was be
 you can use git branch -d branchName to delete the branch.
 
 when files are modified not added you can add and commit at the same time. git commit -am "message"
+
+undoing commits:
+if you add changes but didnt mean to you can undo it before commiting using git reset
+you can also undo a commit using git reset HEAD~1. it will undo the last commit you made
+you can undo later commits using reset. but you must first get the commit ID. to do this we use git log which shows all the commits made to the repo. the syntax it then: git reset ID_code
+you can completly reset the repo to an older commit using reset --hard ID_code
+
+forking:
+this is a way of copying a repo thats not yours. this done using the fork button on the repo you would like to have a copy of. once a repo is forked you then have the ablity to do what ever you want with that fork.
+
 
 tereminal terms:
 ls- list content of current directory
