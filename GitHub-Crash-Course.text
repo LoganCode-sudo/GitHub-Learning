@@ -1,0 +1,88 @@
+what is github?
+-its a free and open source version control system.
+
+what is version control?
+-this is how programmers manage their code.
+-you can save an initial version of you code to github.
+-you can then update code throughout the development process.
+-as your code changes over time you can go back and see all the progress you made.
+-this helps you see "what" you did and "when", it also helps track bugs and allows you to go back to a pervious version of the code(if needed).
+
+Terms:
+-directory: folder
+-terminal or command line: interface for text commands
+-CLI: command line interface
+-cd: change directory
+-repository: the folder/place where your project is kept
+-github: website to host your repositories
+-git: tool that tracks changes to code over time.
+
+git commands:
+-clone: makes a local copy of a repository that is hosted somewhere
+-add: if you make changes, this tells git to track those changes.
+-commit: save your files in git
+-push: once you have made changes to your local copy you can upload it to GitHub
+-pull: when there are changes to your code online you can download those changes to your local machine
+
+
+Practical:
+when you clone a repository from github to your local machine it comes with a hidden folder (.git) this folder tracks all commits/changes made to the repository since it was created.
+
+once you have made changes to your copy of the repository you can use 'git status' to see which files and folders have been changed but not added or commited(shows up in red).
+
+you need to first track those changes using 'git add .' the '.' means track all changes or you can add the name of the file or folder.
+
+before you commit you need a commit message. git commit -m is used to add commit title. you can also add a description using (git commit -m "title" -m "description"). you will the be presented with information on the commit you made.
+
+at this point the the changes you made are not live yet, they are still local. you then push the changes to where the repository is hosted.
+
+before you can push your changes to github you need to prove to github that you are the owner of your account. this is done by ssh keys.
+
+ssh keys:
+first generate a key locally its done using "ssh-keygen" 
+followed by the encryption type then encryption strength and finally github address.
+syntax: ssh-keygen -t rsa -b 4096 -C "logancoghill18@gmail.com"
+
+so now that you have generated your ssh key you can search for it using:
+(ls | grep keyName)
+this will give you two results keyName and keyName.pub
+the result without .pub is the one you should keep secure. it shows github that you created the public key.
+
+now that you have your ssh key you need to set it up with githib. copy your .pub key, then go to github settings,ssh and gpg keys and add ssh key.
+
+you then need to start the ssh agent using: eval "$(ssh-agent -s)"
+then add your private key to the agent using: ssh-add ~/keyName
+
+after all that you can now push your changes to github:
+git push origin master
+-origin is the location of the repository
+-master is the branch we commiting to
+
+creating repositories:
+you can turn a normal folder into a git repo using git init while in the folder.
+
+when you try to push the locally created repo (using:git push origin master) you will get an error because the repo doesnt exsist on github.
+
+to change this create a empty repo on github.
+then copy the quick setup ssh.
+now to add the local repo to the one you created on github.
+using: git remote add origin ssh.link
+once that is done you can check what remote repo its connected to using: git remote -v
+
+if the push doesnt work after the above your ssh has been removed from the agent. start ssh agent back up and add the key again.
+
+branching:
+the default branch is know as the master branch 
+when creating a new branch it has a copy of the master branch code.
+each branch only keeps track of changes made to that branch.
+so if you have you master branch and a feature branch, changes made to the featured code cant be see in the master branch.
+
+git branch- shows all the branchs with in the repo
+git checkout- used to change between branches or with -b to create a new branch
+
+
+tereminal terms:
+ls- list content of current directory
+cat- open a file
+mkdir- create a folder
+touch- used to create files
