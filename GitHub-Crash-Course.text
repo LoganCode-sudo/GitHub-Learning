@@ -79,7 +79,15 @@ so if you have you master branch and a feature branch, changes made to the featu
 
 git branch- shows all the branchs with in the repo
 git checkout- used to change between branches or with -b to create a new branch
+git diff- shows the difference between two branches
+git merge- merges a branch to the master(if you own the repo)
+when on any other branch except the master and its pushed to github, you need to make a pull request.
+pull request is a request to pull your branch into another branch
+after the two branches have been merged you need to run: git pull origin master - in the branch it was merged to
+now that the branches have been merged you no longer need the branch that was being merged.
+you can use git branch -d branchName to delete the branch.
 
+when files are modified not added you can add and commit at the same time. git commit -am "message"
 
 tereminal terms:
 ls- list content of current directory
